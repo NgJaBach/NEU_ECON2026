@@ -1,0 +1,5 @@
+﻿group,n_ideas,diversity_score,pairwise_min,pairwise_max,pairwise_std,n_pairs,method
+control,97,0.466479,0.334983,0.498686,0.016168,4656,"TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+feedback,96,0.469816,0.372483,0.5,0.015415,4560,"TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+improvement,101,0.490925,0.301167,0.5,0.013676,5050,"TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+suggestion,95,0.468909,0.381073,0.496907,0.015465,4465,"TF-IDF (word 1-2gram + char 3-5gram, global vocab)"

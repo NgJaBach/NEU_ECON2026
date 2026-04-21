@@ -1,0 +1,5 @@
+﻿group,n_ideas,diversity_score,method
+control,97,0.465483,TF-IDF (word 1-2gram + char 3-5gram)
+feedback,96,0.467582,TF-IDF (word 1-2gram + char 3-5gram)
+improvement,101,0.485286,TF-IDF (word 1-2gram + char 3-5gram)
+suggestion,95,0.467343,TF-IDF (word 1-2gram + char 3-5gram)

@@ -1,0 +1,5 @@
+﻿group,n_ideas,diversity_score,pairwise_min,pairwise_max,pairwise_std,n_pairs,method
+control,97,0.276186,0.055463,0.50817,0.070703,4656,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+feedback,96,0.290788,0.096843,0.525393,0.077353,4560,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+improvement,101,0.357446,0.069733,0.573052,0.07759,5050,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+suggestion,95,0.280165,0.079669,0.523522,0.071263,4465,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)

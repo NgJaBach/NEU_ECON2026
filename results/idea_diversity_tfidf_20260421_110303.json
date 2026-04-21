@@ -1,0 +1,50 @@
+{
+  "run_at": "20260421_110303",
+  "method": "TF-IDF (word 1-2gram + char 3-5gram, global vocab)",
+  "input_file": "data/data_clean.xlsx",
+  "idea_column": "idea",
+  "group_column": "bot_type",
+  "n_groups": 4,
+  "results": [
+    {
+      "group": "control",
+      "n_ideas": 97,
+      "diversity_score": 0.466479,
+      "pairwise_min": 0.334983,
+      "pairwise_max": 0.498686,
+      "pairwise_std": 0.016168,
+      "n_pairs": 4656,
+      "method": "TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+    },
+    {
+      "group": "feedback",
+      "n_ideas": 96,
+      "diversity_score": 0.469816,
+      "pairwise_min": 0.372483,
+      "pairwise_max": 0.5,
+      "pairwise_std": 0.015415,
+      "n_pairs": 4560,
+      "method": "TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+    },
+    {
+      "group": "improvement",
+      "n_ideas": 101,
+      "diversity_score": 0.490925,
+      "pairwise_min": 0.301167,
+      "pairwise_max": 0.5,
+      "pairwise_std": 0.013676,
+      "n_pairs": 5050,
+      "method": "TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+    },
+    {
+      "group": "suggestion",
+      "n_ideas": 95,
+      "diversity_score": 0.468909,
+      "pairwise_min": 0.381073,
+      "pairwise_max": 0.496907,
+      "pairwise_std": 0.015465,
+      "n_pairs": 4465,
+      "method": "TF-IDF (word 1-2gram + char 3-5gram, global vocab)"
+    }
+  ]
+}

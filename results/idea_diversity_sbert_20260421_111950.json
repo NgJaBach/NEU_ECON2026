@@ -1,0 +1,50 @@
+{
+  "run_at": "20260421_111950",
+  "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)",
+  "input_file": "data/data_clean.xlsx",
+  "idea_column": "idea",
+  "group_column": "bot_type",
+  "n_groups": 4,
+  "results": [
+    {
+      "group": "control",
+      "n_ideas": 97,
+      "diversity_score": 0.276186,
+      "pairwise_min": 0.055463,
+      "pairwise_max": 0.50817,
+      "pairwise_std": 0.070703,
+      "n_pairs": 4656,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "feedback",
+      "n_ideas": 96,
+      "diversity_score": 0.290788,
+      "pairwise_min": 0.096843,
+      "pairwise_max": 0.525393,
+      "pairwise_std": 0.077353,
+      "n_pairs": 4560,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "improvement",
+      "n_ideas": 101,
+      "diversity_score": 0.357446,
+      "pairwise_min": 0.069733,
+      "pairwise_max": 0.573052,
+      "pairwise_std": 0.07759,
+      "n_pairs": 5050,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "suggestion",
+      "n_ideas": 95,
+      "diversity_score": 0.280165,
+      "pairwise_min": 0.079669,
+      "pairwise_max": 0.523522,
+      "pairwise_std": 0.071263,
+      "n_pairs": 4465,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    }
+  ]
+}
