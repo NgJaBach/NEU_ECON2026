@@ -1,0 +1,13 @@
+﻿group,condition,item,n_ideas,diversity_score,pairwise_min,pairwise_max,pairwise_std,n_pairs,method
+A_Question × Camera,A_Question,Camera,26,0.209088,0.041044,0.418168,0.070248,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+A_Question × Sensor,A_Question,Sensor,26,0.243946,0.078374,0.41221,0.063536,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+A_Question × Đèn,A_Question,Đèn,26,0.194131,0.037325,0.416117,0.071369,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+A_Question × Loa,A_Question,Loa,26,0.316208,0.114097,0.50714,0.075744,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+B_Suggestion × Camera,B_Suggestion,Camera,26,0.196173,0.043961,0.303171,0.0477,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+B_Suggestion × Sensor,B_Suggestion,Sensor,26,0.21519,0.055829,0.409209,0.066386,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+B_Suggestion × Đèn,B_Suggestion,Đèn,26,0.173763,0.040497,0.331508,0.054454,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+B_Suggestion × Loa,B_Suggestion,Loa,26,0.296987,0.102802,0.510623,0.087177,325,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+C_Control × Camera,C_Control,Camera,29,0.202165,0.065351,0.372657,0.059356,406,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+C_Control × Sensor,C_Control,Sensor,29,0.239246,0.053762,0.430506,0.071699,406,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+C_Control × Đèn,C_Control,Đèn,29,0.193371,0.068894,0.336726,0.05033,406,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)
+C_Control × Loa,C_Control,Loa,29,0.296127,0.095417,0.479454,0.083629,406,Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)

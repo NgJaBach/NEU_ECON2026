@@ -1,0 +1,151 @@
+{
+  "run_at": "20260422_103416",
+  "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)",
+  "input": "data/Data.xlsx",
+  "results": [
+    {
+      "group": "A_Question × Camera",
+      "condition": "A_Question",
+      "item": "Camera",
+      "n_ideas": 26,
+      "diversity_score": 0.209088,
+      "pairwise_min": 0.041044,
+      "pairwise_max": 0.418168,
+      "pairwise_std": 0.070248,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "A_Question × Sensor",
+      "condition": "A_Question",
+      "item": "Sensor",
+      "n_ideas": 26,
+      "diversity_score": 0.243946,
+      "pairwise_min": 0.078374,
+      "pairwise_max": 0.41221,
+      "pairwise_std": 0.063536,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "A_Question × Đèn",
+      "condition": "A_Question",
+      "item": "Đèn",
+      "n_ideas": 26,
+      "diversity_score": 0.194131,
+      "pairwise_min": 0.037325,
+      "pairwise_max": 0.416117,
+      "pairwise_std": 0.071369,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "A_Question × Loa",
+      "condition": "A_Question",
+      "item": "Loa",
+      "n_ideas": 26,
+      "diversity_score": 0.316208,
+      "pairwise_min": 0.114097,
+      "pairwise_max": 0.50714,
+      "pairwise_std": 0.075744,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "B_Suggestion × Camera",
+      "condition": "B_Suggestion",
+      "item": "Camera",
+      "n_ideas": 26,
+      "diversity_score": 0.196173,
+      "pairwise_min": 0.043961,
+      "pairwise_max": 0.303171,
+      "pairwise_std": 0.0477,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "B_Suggestion × Sensor",
+      "condition": "B_Suggestion",
+      "item": "Sensor",
+      "n_ideas": 26,
+      "diversity_score": 0.21519,
+      "pairwise_min": 0.055829,
+      "pairwise_max": 0.409209,
+      "pairwise_std": 0.066386,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "B_Suggestion × Đèn",
+      "condition": "B_Suggestion",
+      "item": "Đèn",
+      "n_ideas": 26,
+      "diversity_score": 0.173763,
+      "pairwise_min": 0.040497,
+      "pairwise_max": 0.331508,
+      "pairwise_std": 0.054454,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "B_Suggestion × Loa",
+      "condition": "B_Suggestion",
+      "item": "Loa",
+      "n_ideas": 26,
+      "diversity_score": 0.296987,
+      "pairwise_min": 0.102802,
+      "pairwise_max": 0.510623,
+      "pairwise_std": 0.087177,
+      "n_pairs": 325,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "C_Control × Camera",
+      "condition": "C_Control",
+      "item": "Camera",
+      "n_ideas": 29,
+      "diversity_score": 0.202165,
+      "pairwise_min": 0.065351,
+      "pairwise_max": 0.372657,
+      "pairwise_std": 0.059356,
+      "n_pairs": 406,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "C_Control × Sensor",
+      "condition": "C_Control",
+      "item": "Sensor",
+      "n_ideas": 29,
+      "diversity_score": 0.239246,
+      "pairwise_min": 0.053762,
+      "pairwise_max": 0.430506,
+      "pairwise_std": 0.071699,
+      "n_pairs": 406,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "C_Control × Đèn",
+      "condition": "C_Control",
+      "item": "Đèn",
+      "n_ideas": 29,
+      "diversity_score": 0.193371,
+      "pairwise_min": 0.068894,
+      "pairwise_max": 0.336726,
+      "pairwise_std": 0.05033,
+      "n_pairs": 406,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    },
+    {
+      "group": "C_Control × Loa",
+      "condition": "C_Control",
+      "item": "Loa",
+      "n_ideas": 29,
+      "diversity_score": 0.296127,
+      "pairwise_min": 0.095417,
+      "pairwise_max": 0.479454,
+      "pairwise_std": 0.083629,
+      "n_pairs": 406,
+      "method": "Sentence-BERT (paraphrase-multilingual-MiniLM-L12-v2)"
+    }
+  ]
+}
