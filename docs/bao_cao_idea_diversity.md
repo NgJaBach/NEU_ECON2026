@@ -239,6 +239,27 @@ diversity_stats_TIMESTAMP.json / .csv
 | `results/diversity_stats_20260424_144713.json` | ANOVA + Tukey HSD đầy đủ |
 | `results/diversity_stats_20260424_144713.csv` | Thống kê mô tả tổng hợp |
 
+#### Giải thích cột trong `diversity_stats_*.csv`
+
+File này gồm **7 hàng**: 3 hàng cho điều kiện (condition) và 4 hàng cho bài kiểm tra (item).
+
+| Cột | Kiểu giá trị | Ý nghĩa |
+|-----|-------------|---------|
+| `factor` | `"condition"` hoặc `"item"` | Cho biết hàng này tổng hợp theo điều kiện AI hay theo loại đồ vật |
+| `condition` | `A_Question`, `B_Suggestion`, `C_Control`, *(trống)* | Tên điều kiện — chỉ có giá trị ở các hàng `factor = condition` |
+| `item` | `Camera`, `Sensor`, `Đèn`, `Loa`, *(trống)* | Tên bài kiểm tra — chỉ có giá trị ở các hàng `factor = item` |
+| `n` | Số nguyên | Số nhóm được tổng hợp (condition: n=4 bài; item: n=3 điều kiện) |
+| `mean` | [0, 1] | **Trung bình điểm đa dạng** của các nhóm trong nhóm tổng hợp này |
+| `std` | ≥ 0 | Độ lệch chuẩn của điểm đa dạng — đo mức độ biến động giữa các nhóm |
+| `min` | [0, 1] | Điểm đa dạng thấp nhất trong nhóm tổng hợp |
+| `max` | [0, 1] | Điểm đa dạng cao nhất trong nhóm tổng hợp |
+
+**Ví dụ đọc bảng:**
+
+- Hàng `condition / A_Question / n=4 / mean=0.2408`: nhóm AI đặt câu hỏi có trung bình điểm đa dạng = 0.241, tính trên 4 bài kiểm tra (Camera, Sensor, Đèn, Loa).
+- Hàng `item / Loa / n=3 / mean=0.3031`: bài Loa có trung bình điểm đa dạng = 0.303, tính trên 3 điều kiện (A, B, C). Std = 0.011 rất nhỏ → kết quả nhất quán giữa các điều kiện.
+- Hàng `item / Đèn / n=3 / mean=0.1871`: bài Đèn có độ đa dạng thấp nhất, bất kể điều kiện AI nào.
+
 ---
 
 ## 8. Cách Chạy Lại
