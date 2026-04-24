@@ -1,116 +1,147 @@
 # NEU ECON 2026 — Idea Diversity Scoring
 
-Measures semantic diversity for lists of ideas from a human–AI co-creation experiment.
-Output: one score per experimental condition, in **[0, 1]** (higher = more diverse ideas).
+Đo lường **độ đa dạng ngữ nghĩa của ý tưởng** trong thực nghiệm human–AI co-creation.  
+Đầu ra: một điểm số trong **[0, 1]** cho mỗi nhóm (cao hơn = ý tưởng đa dạng hơn).
+
+Dữ liệu chính: `data/Data.xlsx` — 81 người tham gia, 3 điều kiện AI × 4 bài kiểm tra = **12 nhóm**.
 
 ---
 
-## Project Structure
+## Cấu Trúc Project
 
 ```
 .
-├── data/               # Input data files (Excel / CSV)
-│   └── data_clean.xlsx # Sample/reference dataset (English, 4 conditions)
-├── docs/               # Methodology notes
-│   └── idea_diversity_methodology.md
-├── results/            # Auto-generated output (CSV + JSON per run)
+├── data/
+│   ├── Data.xlsx              # Dữ liệu chính (tiếng Việt, 81 người, wide format)
+│   └── data_clean.xlsx        # Dữ liệu mẫu dùng để validation (tiếng Anh)
+├── docs/
+│   └── bao_cao_idea_diversity.md   # Báo cáo đầy đủ: thuật toán, kết quả, ANOVA
+├── results/
+│   ├── diversity_12groups_sbert_20260422_103416.csv  # Kết quả chính (12 nhóm)
+│   ├── diversity_stats_20260424_144713.json          # ANOVA + Tukey HSD
+│   └── diversity_stats_20260424_144713.csv           # Thống kê mô tả tổng hợp
 ├── src/
-│   └── idea_diversity.py   # Main scoring script
+│   ├── idea_diversity.py      # Core pipeline (reusable, CLI)
+│   ├── score_data.py          # Tính điểm 12 nhóm từ Data.xlsx
+│   └── analyze_diversity.py   # Kiểm định thống kê (ANOVA, Tukey HSD)
+├── papers/                    # Tài liệu tham khảo
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Setup
+## Cài Đặt
 
-**Python 3.10+ required.**
+**Yêu cầu:** Python 3.10+
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> **Note on PyTorch:** `pip install torch` installs the GPU version by default (~2 GB).
-> For CPU-only (smaller, sufficient for this task):
+> **Lưu ý:** `pip install torch` mặc định cài bản GPU (~2 GB).
+> Để cài CPU-only (nhẹ hơn, đủ dùng cho task này):
 > ```bash
 > pip install torch --index-url https://download.pytorch.org/whl/cpu
+> pip install -r requirements.txt
 > ```
-> Then run `pip install -r requirements.txt` as normal.
 
-The first run will download the multilingual Sentence-BERT model (~117 MB, cached automatically).
+Lần chạy đầu tiên sẽ tự tải model Sentence-BERT (~117 MB, tự động cache sau đó).
+
+> **Môi trường đã test:** `C:\Users\ngbac\miniconda3\python.exe` (Python 3.13, conda base env)
 
 ---
 
-## Usage
+## Cách Chạy
 
-### Basic (auto-detects columns)
+### Tính điểm 12 nhóm (kết quả chính)
+
 ```bash
-python src/idea_diversity.py data/data_clean.xlsx
+python src/score_data.py
 ```
 
-### Full options
+Đọc `data/Data.xlsx`, tính điểm đa dạng cho 12 nhóm (3 điều kiện × 4 bài), lưu vào `results/`.
+
+### Kiểm định thống kê (ANOVA + Tukey HSD)
+
+```bash
+python src/analyze_diversity.py
+```
+
+Đọc CSV kết quả mới nhất trong `results/`, chạy one-way ANOVA, two-way ANOVA, và Tukey HSD post-hoc.
+
+### Pipeline tổng quát (cho dữ liệu mới)
+
 ```bash
 python src/idea_diversity.py data/my_data.xlsx \
-  --group-col  bot_type \          # column that defines the 12 lists
-  --row-filter-col  row_type \     # optional: filter rows first
-  --row-filter-val  submission \   #   keep only rows where row_type == "submission"
+  --group-col  condition \       # cột phân nhóm
+  --row-filter-col  row_type \   # (tuỳ chọn) lọc dòng
+  --row-filter-val  submission \
   --output-dir  results
 ```
 
-### Force TF-IDF (no internet / no GPU needed)
-```bash
-python src/idea_diversity.py data/my_data.xlsx --no-sbert
-```
+#### Tất cả các tham số
 
-### All flags
-| Flag | Default | Description |
-|------|---------|-------------|
-| `filepath` | — | Path to `.xlsx` or `.csv` |
-| `--group-col` | auto-detected | Column that separates ideas into lists |
-| `--idea-col` | auto-detected (`idea`) | Column containing idea text |
-| `--row-filter-col` | none | Filter: column name |
-| `--row-filter-val` | none | Filter: value to keep |
-| `--no-sbert` | off | Use TF-IDF instead of Sentence-BERT |
-| `--output-dir` | `results/` | Where to write output files |
+| Tham số | Mặc định | Mô tả |
+|---------|---------|-------|
+| `filepath` | — | Đường dẫn file `.xlsx` hoặc `.csv` |
+| `--group-col` | tự nhận diện | Cột phân nhóm ý tưởng |
+| `--idea-col` | tự nhận diện (`idea`) | Cột chứa nội dung ý tưởng |
+| `--row-filter-col` | không | Tên cột lọc |
+| `--row-filter-val` | không | Giá trị cần giữ lại |
+| `--no-sbert` | tắt | Dùng TF-IDF thay Sentence-BERT |
+| `--output-dir` | `results/` | Thư mục lưu kết quả |
 
 ---
 
-## Input Format
+## Định Dạng Đầu Vào
 
-| Column | Required | Description |
-|--------|----------|-------------|
-| `idea` | Yes | Text of the idea (Vietnamese or any language) |
-| `bot_type` / `condition` / `group` | Yes | Which list this idea belongs to |
-| `row_type` | Recommended | Use `--row-filter-val submission` to exclude incomplete rows |
+### Data.xlsx (wide format — 4 cột ý tưởng trên mỗi dòng)
 
----
+| Cột | Mô tả |
+|-----|-------|
+| `Bạn được chia vào nhóm điều kiện nào` | Điều kiện: Nhóm A/B/C |
+| `Hãy đề xuất ... "Camera "` | Ý tưởng bài Camera |
+| `Hãy đề xuất ... "Sensor (...)"` | Ý tưởng bài Sensor |
+| `Hãy đề xuất ... Đèn (Lights)` | Ý tưởng bài Đèn |
+| `Hãy đề xuất ... "Loa (Speakers)"` | Ý tưởng bài Loa |
 
-## Output
+### Long format (dùng với `idea_diversity.py`)
 
-Two files are written to `results/` after each run:
-
-**`idea_diversity_sbert_YYYYMMDD_HHMMSS.csv`**
-```
-group,n_ideas,diversity_score,pairwise_min,pairwise_max,pairwise_std,n_pairs,method
-control,97,0.2762,...
-feedback,96,0.2908,...
-```
-
-**`idea_diversity_sbert_YYYYMMDD_HHMMSS.json`** — same data plus run metadata.
-
-The key column is **`diversity_score`**: one number per list, in [0, 1].
+| Cột | Bắt buộc | Mô tả |
+|-----|----------|-------|
+| `idea` | Có | Nội dung ý tưởng (tiếng Việt hoặc bất kỳ ngôn ngữ nào) |
+| `condition` / `group` | Có | Nhóm của ý tưởng |
+| `row_type` | Khuyến nghị | Dùng `--row-filter-val submission` để loại dòng không hợp lệ |
 
 ---
 
-## Method
+## Đầu Ra
 
-**Average Pairwise Cosine Distance** — the standard approach from the DAT
-(Divergent Association Task) and Sentence-BERT literature:
+### `diversity_12groups_sbert_YYYYMMDD_HHMMSS.csv` — Kết quả chính
 
-1. Embed each idea with `paraphrase-multilingual-MiniLM-L12-v2` (supports Vietnamese)
-2. For every unique pair of ideas in a list: compute cosine distance
-3. Average all pairwise distances → divide by 2 → diversity score in [0, 1]
+```
+group,condition,item,n_ideas,diversity_score,pairwise_min,pairwise_max,pairwise_std,n_pairs,method
+A_Question × Camera,A_Question,Camera,26,0.209088,...
+...
+```
 
-If `sentence-transformers` is unavailable, falls back to TF-IDF with character + word n-grams.
+Cột quan trọng nhất: **`diversity_score`** — một số trong [0, 1] cho mỗi nhóm.
 
-See [`docs/idea_diversity_methodology.md`](docs/idea_diversity_methodology.md) for full details and references.
+### `diversity_stats_YYYYMMDD_HHMMSS.json` — Thống kê kiểm định
+
+Chứa: thống kê mô tả (mean, std, min, max) theo điều kiện và bài, kết quả ANOVA, bảng Tukey HSD.
+
+---
+
+## Phương Pháp
+
+**Average Pairwise Cosine Distance** — từ DAT (Divergent Association Task, Olson et al. 2021) mở rộng sang sentence embeddings:
+
+1. Nhúng mỗi ý tưởng bằng `paraphrase-multilingual-MiniLM-L12-v2` (hỗ trợ tiếng Việt)
+2. Tính cosine distance cho mọi cặp ý tưởng trong nhóm
+3. Lấy trung bình tất cả khoảng cách → chia 2 → điểm đa dạng ∈ [0, 1]
+
+TF-IDF (word + char n-gram) là phương án dự phòng khi không có `sentence-transformers`.
+
+Xem [`docs/bao_cao_idea_diversity.md`](docs/bao_cao_idea_diversity.md) để biết chi tiết thuật toán, kết quả, và kiểm định thống kê.
