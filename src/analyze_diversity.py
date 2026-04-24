@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
+from statsmodels.stats.anova import anova_lm
 import statsmodels.formula.api as smf
 
 
@@ -121,8 +122,6 @@ def main():
     df2["cond"] = df2["condition"].str.replace(r"[^A-Za-z0-9]", "_", regex=True)
     df2["it"] = df2["item"].str.replace(r"[^A-Za-z0-9]", "_", regex=True)
     model = smf.ols("diversity_score ~ C(cond) + C(it)", data=df2).fit()
-    anova_table = smf.ols("diversity_score ~ C(cond) + C(it)", data=df2)
-    from statsmodels.stats.anova import anova_lm
     anova2 = anova_lm(model, typ=2)
     print(anova2.round(4).to_string())
     print(f"\n  R² = {model.rsquared:.4f}   Adj-R² = {model.rsquared_adj:.4f}")

@@ -1,0 +1,192 @@
+{
+  "source_csv": "diversity_12groups_sbert_20260422_103416.csv",
+  "generated": "20260424_150329",
+  "note": "n=4 per condition, n=3 per item — limited statistical power for group-level tests",
+  "descriptive_by_condition": [
+    {
+      "condition": "A_Question",
+      "n": 4,
+      "mean": 0.240843,
+      "std": 0.054406,
+      "min": 0.194131,
+      "max": 0.316208
+    },
+    {
+      "condition": "B_Suggestion",
+      "n": 4,
+      "mean": 0.220528,
+      "std": 0.053711,
+      "min": 0.173763,
+      "max": 0.296987
+    },
+    {
+      "condition": "C_Control",
+      "n": 4,
+      "mean": 0.232727,
+      "std": 0.046708,
+      "min": 0.193371,
+      "max": 0.296127
+    }
+  ],
+  "descriptive_by_item": [
+    {
+      "item": "Camera",
+      "n": 3,
+      "mean": 0.202475,
+      "std": 0.006463,
+      "min": 0.196173,
+      "max": 0.209088
+    },
+    {
+      "item": "Loa",
+      "n": 3,
+      "mean": 0.303107,
+      "std": 0.011354,
+      "min": 0.296127,
+      "max": 0.316208
+    },
+    {
+      "item": "Sensor",
+      "n": 3,
+      "mean": 0.232794,
+      "std": 0.015426,
+      "min": 0.21519,
+      "max": 0.243946
+    },
+    {
+      "item": "Đèn",
+      "n": 3,
+      "mean": 0.187088,
+      "std": 0.011546,
+      "min": 0.173763,
+      "max": 0.194131
+    }
+  ],
+  "anova_condition": {
+    "f_statistic": 0.1563,
+    "p_value": 0.8576,
+    "eta_squared": 0.0336,
+    "kruskal_H": 0.5,
+    "kruskal_p": 0.7788
+  },
+  "anova_item": {
+    "f_statistic": 58.6338,
+    "p_value": 0.0,
+    "eta_squared": 0.9565,
+    "kruskal_H": 10.3846,
+    "kruskal_p": 0.0156
+  },
+  "twoway_anova": {
+    "model": "diversity_score ~ C(condition) + C(item)",
+    "r_squared": 0.9901,
+    "adj_r_squared": 0.9818,
+    "anova_table": [
+      {
+        "term": "C(cond)",
+        "sum_sq": 0.0008,
+        "df": 2.0,
+        "F": 10.1447,
+        "PR(>F)": 0.0119
+      },
+      {
+        "term": "C(it)",
+        "sum_sq": 0.0238,
+        "df": 3.0,
+        "F": 192.6813,
+        "PR(>F)": 0.0
+      },
+      {
+        "term": "Residual",
+        "sum_sq": 0.0002,
+        "df": 6.0,
+        "F": NaN,
+        "PR(>F)": NaN
+      }
+    ]
+  },
+  "tukey_condition": [
+    {
+      "group1": "A_Question",
+      "group2": "B_Suggestion",
+      "meandiff": -0.0203,
+      "p_adj": 0.8463,
+      "lower": -0.1224,
+      "upper": 0.0818,
+      "reject_H0": false
+    },
+    {
+      "group1": "A_Question",
+      "group2": "C_Control",
+      "meandiff": -0.0081,
+      "p_adj": 0.9733,
+      "lower": -0.1102,
+      "upper": 0.094,
+      "reject_H0": false
+    },
+    {
+      "group1": "B_Suggestion",
+      "group2": "C_Control",
+      "meandiff": 0.0122,
+      "p_adj": 0.9409,
+      "lower": -0.0899,
+      "upper": 0.1143,
+      "reject_H0": false
+    }
+  ],
+  "tukey_item": [
+    {
+      "group1": "Camera",
+      "group2": "Loa",
+      "meandiff": 0.1006,
+      "p_adj": 0.0,
+      "lower": 0.0702,
+      "upper": 0.1311,
+      "reject_H0": true
+    },
+    {
+      "group1": "Camera",
+      "group2": "Sensor",
+      "meandiff": 0.0303,
+      "p_adj": 0.0509,
+      "lower": -0.0001,
+      "upper": 0.0608,
+      "reject_H0": false
+    },
+    {
+      "group1": "Camera",
+      "group2": "Đèn",
+      "meandiff": -0.0154,
+      "p_adj": 0.4208,
+      "lower": -0.0458,
+      "upper": 0.015,
+      "reject_H0": false
+    },
+    {
+      "group1": "Loa",
+      "group2": "Sensor",
+      "meandiff": -0.0703,
+      "p_adj": 0.0003,
+      "lower": -0.1007,
+      "upper": -0.0399,
+      "reject_H0": true
+    },
+    {
+      "group1": "Loa",
+      "group2": "Đèn",
+      "meandiff": -0.116,
+      "p_adj": 0.0,
+      "lower": -0.1465,
+      "upper": -0.0856,
+      "reject_H0": true
+    },
+    {
+      "group1": "Sensor",
+      "group2": "Đèn",
+      "meandiff": -0.0457,
+      "p_adj": 0.0058,
+      "lower": -0.0761,
+      "upper": -0.0153,
+      "reject_H0": true
+    }
+  ]
+}
