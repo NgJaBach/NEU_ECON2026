@@ -226,18 +226,19 @@ mean(pairwise) / 2: điểm đa dạng ∈ [0, 1]
     ↓
 diversity_12groups_sbert_TIMESTAMP.csv (12 dòng)
     ↓
-analyze_diversity.py: ANOVA + Tukey HSD
-    ↓
-diversity_stats_TIMESTAMP.json / .csv
+analyze_diversity.py: ANOVA + Tukey HSD          plot_diversity.py: box plot
+    ↓                                                      ↓
+diversity_stats_TIMESTAMP.json / .csv          figures/diversity_boxplot.png
 ```
 
 ### Các file đầu ra
 
 | File | Mô tả |
 |------|-------|
-| `results/diversity_12groups_sbert_20260422_103416.csv` | 12 điểm đa dạng (kết quả chính) |
-| `results/diversity_stats_20260424_144713.json` | ANOVA + Tukey HSD đầy đủ |
-| `results/diversity_stats_20260424_144713.csv` | Thống kê mô tả tổng hợp |
+| `results/diversity_12groups_sbert_*.csv` | 12 điểm đa dạng (kết quả chính) |
+| `results/diversity_stats_*.json` | ANOVA + Tukey HSD đầy đủ |
+| `results/diversity_stats_*.csv` | Thống kê mô tả tổng hợp |
+| `results/figures/diversity_boxplot.png` | Box plot pairwise distances theo điều kiện và vòng |
 
 #### Giải thích cột trong `diversity_stats_*.csv`
 

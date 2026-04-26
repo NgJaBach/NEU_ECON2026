@@ -17,13 +17,16 @@ Dữ liệu chính: `data/Data.xlsx` — 81 người tham gia, 3 điều kiện 
 ├── docs/
 │   └── bao_cao_idea_diversity.md   # Báo cáo đầy đủ: thuật toán, kết quả, ANOVA
 ├── results/
-│   ├── diversity_12groups_sbert_20260422_103416.csv  # Kết quả chính (12 nhóm)
-│   ├── diversity_stats_20260424_144713.json          # ANOVA + Tukey HSD
-│   └── diversity_stats_20260424_144713.csv           # Thống kê mô tả tổng hợp
+│   ├── diversity_12groups_sbert_*.csv   # Kết quả chính (12 nhóm)
+│   ├── diversity_stats_*.json           # ANOVA + Tukey HSD
+│   ├── diversity_stats_*.csv            # Thống kê mô tả tổng hợp
+│   └── figures/
+│       └── diversity_boxplot.png        # Box plot
 ├── src/
 │   ├── idea_diversity.py      # Core pipeline (reusable, CLI)
 │   ├── score_data.py          # Tính điểm 12 nhóm từ Data.xlsx
-│   └── analyze_diversity.py   # Kiểm định thống kê (ANOVA, Tukey HSD)
+│   ├── analyze_diversity.py   # Kiểm định thống kê (ANOVA, Tukey HSD)
+│   └── plot_diversity.py      # Vẽ box plot kết quả
 ├── papers/                    # Tài liệu tham khảo
 ├── requirements.txt
 └── README.md
@@ -69,6 +72,14 @@ python src/analyze_diversity.py
 ```
 
 Đọc CSV kết quả mới nhất trong `results/`, chạy one-way ANOVA, two-way ANOVA, và Tukey HSD post-hoc.
+
+### Vẽ box plot
+
+```bash
+python src/plot_diversity.py
+```
+
+Tạo `results/figures/diversity_boxplot.png` — phân phối pairwise distances theo điều kiện và vòng, style giống workload chart.
 
 ### Pipeline tổng quát (cho dữ liệu mới)
 
